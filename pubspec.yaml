@@ -14,6 +14,8 @@ dependencies:
 
   cupertino_icons: ^1.0.2
   page_transition: ^2.0.2   #ページ転移用
+  url_launcher: ^6.0.9 #ハイパーリンク
+  google_fonts: ^2.1.0 #google font
 
 dev_dependencies:
   flutter_test:

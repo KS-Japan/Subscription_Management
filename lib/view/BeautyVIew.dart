@@ -1,44 +1,52 @@
 import 'package:flutter/material.dart';
 import 'package:subscription_manager/variable/parameters.dart';//基本パラメータ
+//import 'package:url_launcher/url_launcher.dart';//ハイパーリンク
 import 'package:subscription_manager/MainScreen.dart';//基本パラメータ
 import 'package:subscription_manager/LookForScreen.dart';
+import 'package:subscription_manager/GraphicalScreen.dart';
 import 'package:page_transition/page_transition.dart';
-import 'package:url_launcher/url_launcher.dart';//ハイパーリンク
 
-class GraphicalScreen extends StatefulWidget {
+class BeautyViewScreen extends StatefulWidget {
   @override
-  _GraphicalScreenState createState() => _GraphicalScreenState();
+  _BeautyViewScreenState createState() => _BeautyViewScreenState();
 }
 
-class _GraphicalScreenState extends State<GraphicalScreen>{
+class _BeautyViewScreenState extends State<BeautyViewScreen>{
   //メイン画面
   @override
   Widget build(BuildContext context) {
     Color mainColor = Colors.indigo[900]!;
     return Scaffold(
       appBar: AppBar(
-        title: Text(BaseParameters().titleGraphical),//呼び出して当てはめる
+        title: Text(BaseParameters().titleBeautyView),//呼び出して当てはめる
         backgroundColor: mainColor,
-        //backgroundColor: Colors.indigo[900],
         centerTitle: true,
         elevation: 0.0,
-        automaticallyImplyLeading: false,
       ),
       body:ListView(
           children: <Widget>[
-            Padding(
-              padding: EdgeInsets.only(left: 8.0),
-              child:InkWell(
-                  child: Text("@yuki_investor95"),
-                  onTap: () => launch('https://twitter.com/yuki_investor95')
+
+            Card(
+              child: ListTile(
+                leading: Icon(Icons.circle_outlined),
+                title: Text("RAXY(ラクシー)",style: TextStyle(fontSize: 20.0)),
+                subtitle: Text('月額2,480円/3ヶ月7,140円',style: TextStyle(fontSize: 15.0)),
+                onTap: () {},
               ),
             ),
-          ],
+            Card(
+              child: ListTile(
+                leading: Icon(Icons.circle_outlined),
+                title: Text("BLOOMBOX",style: TextStyle(fontSize: 20.0)),
+                subtitle: Text('月額1,650円/6ヶ月8,800円/12ヶ月16,500円',style: TextStyle(fontSize: 15.0)),
+                onTap: () {},
+              ),
+            ),
+
+          ]
       ),
-
-
       bottomNavigationBar: BottomNavigationBar(
-          currentIndex: BaseParameters().currentIndexOne,
+          currentIndex: BaseParameters().currentIndexTwo,
           items: [
             new BottomNavigationBarItem(
                 icon: new Icon(Icons.savings_outlined),
@@ -62,6 +70,14 @@ class _GraphicalScreenState extends State<GraphicalScreen>{
                     child: MainScreen(),
                   )
               );
+            }else if(index == 1){
+              Navigator.pushReplacement(
+                  context,
+                  PageTransition(
+                    type: PageTransitionType.rightToLeft,
+                    child: GraphicalScreen(),
+                  )
+              );
             }else if(index == 2){
               Navigator.pushReplacement(
                   context,
@@ -73,6 +89,7 @@ class _GraphicalScreenState extends State<GraphicalScreen>{
             }
           }
       ),
+
     );
   }
 }

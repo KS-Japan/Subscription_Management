@@ -22,6 +22,7 @@ class _MainScreenState extends State<MainScreen>{
           //backgroundColor: Colors.indigo[900],
           centerTitle: true,
           elevation: 0.0,
+          automaticallyImplyLeading: false,
         ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: BaseParameters().currentIndexZero,
